@@ -54,12 +54,14 @@ $(document).ready(function(){
       success: function(data) {
         console.log(data);
         var films = data.results;
+
         console.log(films);
         printFilms(films);
 
       },
       error: function (request,state,errors) {
         console.log(errors);
+        alert("Nessun risultato trovato, riprova");
       }
     });
   });
@@ -72,20 +74,29 @@ function printFilms(films) {
   var template = Handlebars.compile(source);
 
   $(".covers").html(""); //Cancello l'HTML della ricerca precedente
-
-  for (var i = 0; i < films.length; i++) {
-    var thisFilm = films[i];
-    console.log(thisFilm);
-
-    var context = {
-
-      title: thisFilm.title,
-      original_title : thisFilm.original_title,
-      original_language : thisFilm.original_language,
-      vote_average: thisFilm.vote_average
-
-    }
-    var html = template(context);
-    $(".covers").append(html);
+  if (films.length == 0) {
+    alert("Nessun risultato trovato, riprova");
   }
+
+  else {
+    for (var i = 0; i < films.length; i++) {
+      var thisFilm = films[i];
+      console.log(thisFilm);
+
+
+      var context = {
+
+        title: thisFilm.title,
+        original_title : thisFilm.original_title,
+        original_language : thisFilm.original_language,
+        vote_average: thisFilm.vote_average
+
+      }
+      var html = template(context);
+      $(".covers").append(html);
+    }
+
+  }
+
+
 }
