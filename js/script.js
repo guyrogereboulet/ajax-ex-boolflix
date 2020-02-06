@@ -71,6 +71,8 @@ function printFilms(films) {
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
 
+  $(".covers").html(""); //Cancello l'HTML della ricerca precedente
+
   for (var i = 0; i < films.length; i++) {
     var thisFilm = films[i];
     console.log(thisFilm);
