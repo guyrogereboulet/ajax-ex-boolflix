@@ -11,6 +11,8 @@
     <title>ajax-ex-boolflix</title>
   </head>
   <body>
+    <input class="send-text" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
+    <button class="send-button" type="button" name="button">cerca</button>
     <ul class="covers">
 
     </ul>
@@ -19,7 +21,10 @@
 
     <script id="film-template" type="text/x-handlebars-template">
 
-      <li> </li>
+      <li>{{title}}</li>
+       <h4>{{original_title}}</h>
+       <h5>{{original_language}}</h5>
+      <small>{{vote_average}}</small>
 
     </script>
     <script src="js/script.js" charset="utf-8"></script>

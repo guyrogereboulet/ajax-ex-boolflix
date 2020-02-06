@@ -39,34 +39,51 @@
 
 
 $(document).ready(function(){
-  var query = "Ritorno al futuro";
-  $.ajax({
-    url: "https://api.themoviedb.org/3/search/movie",
-    method: "GET",
-    data: {
-      api_key: "2497798e40ab8a3da50f2eb1da517d7c",
-      query: query,
-      language:"it-IT"
+  $(".send-button").click(function () {
+    var query = "Ritorno al futuro";
+    var newQuery = $(".send-text").val();
+    $.ajax({
+      url: "https://api.themoviedb.org/3/search/movie",
+      method: "GET",
+      data: {
+        api_key: "2497798e40ab8a3da50f2eb1da517d7c",
+        query: newQuery,
+        language:"it-IT"
 
-    },
-    success: function(data) {
-      console.log(data);
-      var films = data.results;
-      console.log(films);
-      printFilms(films);
+      },
+      success: function(data) {
+        console.log(data);
+        var films = data.results;
+        console.log(films);
+        printFilms(films);
 
-    },
-    error: function (request,state,errors) {
-      console.log(errors);
-    }
+      },
+      error: function (request,state,errors) {
+        console.log(errors);
+      }
+    });
   });
 
 });
 
-
+// FUNCTIONS //
 function printFilms(films) {
+  var source = $("#film-template").html();
+  var template = Handlebars.compile(source);
+
   for (var i = 0; i < films.length; i++) {
     var thisFilm = films[i];
     console.log(thisFilm);
+
+    var context = {
+
+      title: thisFilm.title,
+      original_title : thisFilm.original_title,
+      original_language : thisFilm.original_language,
+      vote_average: thisFilm.vote_average
+
+    }
+    var html = template(context);
+    $(".covers").append(html);
   }
 }
