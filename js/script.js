@@ -40,45 +40,54 @@
 
 $(document).ready(function(){
   $(".send-button").click(function () {
-    var query = "Ritorno al futuro";
-    var newQuery = $(".send-text").val();
-    $.ajax({
-      url: "https://api.themoviedb.org/3/search/movie",
-      method: "GET",
-      data: {
-        api_key: "2497798e40ab8a3da50f2eb1da517d7c",
-        query: newQuery,
-        language:"it-IT"
-
-      },
-      success: function(data) {
-        console.log(data);
-        var films = data.results;
-
-        console.log(films);
-        printFilms(films);
-
-      },
-      error: function (request,state,errors) {
-        console.log(errors);
-        alert("Nessun risultato trovato, riprova");
-      }
-    });
+     var query = $(".send-text").val();
+     resetSearch();
+     getMovies(query);
   });
+
+
 
 });
 
 // FUNCTIONS //
+function getMovies(string) {
+  var api_Key = "2497798e40ab8a3da50f2eb1da517d7c";
+  var url = "https://api.themoviedb.org/3/search/movie";
+  $.ajax({
+    url: url,
+    method: "GET",
+    data: {
+      api_key: api_Key,
+      query: string,
+      language:"it-IT"
+
+    },
+    success: function(data) {
+      // Controllo che ci siano risultati
+      if (data.total_results > 0) {
+        var films = data.results;
+        printFilms(films);
+      }
+      else {
+        resetSearch()
+        printNoResult();
+      }
+
+
+
+    },
+    error: function (request,state,errors) {
+      console.log(errors);
+    }
+  });
+}
+
+
+
 function printFilms(films) {
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
 
-  $(".covers").html(""); //Cancello l'HTML della ricerca precedente
-  if (films.length == 0) {
-    alert("Nessun risultato trovato, riprova");
-  }
-
-  else {
     for (var i = 0; i < films.length; i++) {
       var thisFilm = films[i];
       console.log(thisFilm);
@@ -96,7 +105,19 @@ function printFilms(films) {
       $(".covers").append(html);
     }
 
-  }
 
 
+
+}
+
+function resetSearch() {
+    $(".covers").html("");
+    $(".send-text").val("");
+}
+
+function printNoResult() {
+  var source = $("#no-results").html();
+  var template = Handlebars.compile(source);
+  var html = template();
+  $(".covers").append(html);
 }
