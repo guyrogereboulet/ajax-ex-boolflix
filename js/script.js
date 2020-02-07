@@ -83,6 +83,36 @@ function getMovies(string) {
       console.log(errors);
     }
   });
+
+  // SerieTV
+
+  var api_key = "2497798e40ab8a3da50f2eb1da517d7c";
+  var url = "https://api.themoviedb.org/3/search/tv";
+  $.ajax({
+    url: url,
+    method: "GET",
+    data: {
+      api_key: api_Key,
+      query: string,
+      language:"it-IT"
+
+    },
+    success: function(data) {
+      // Controllo che ci siano risultati
+      if (data.total_results > 0) {
+        var series = data.results;
+        printSeries(series);
+      }
+      else {
+        resetSearch()
+        printNoResult();
+      }
+
+    },
+    error: function (request,state,errors) {
+      console.log(errors);
+    }
+  });
 }
 
 
@@ -103,6 +133,30 @@ function printFilms(films) {
         original_language : 'img/' +flag + '.png',
 
         specialChars: printStars(thisFilm.vote_average)
+      }
+      var html = template(context);
+      $(".covers").append(html);
+    }
+
+
+}
+
+function printSeries(series) {
+  var source = $("#series-template").html();
+  var template = Handlebars.compile(source);
+
+    for (var i = 0; i < series.length; i++) {
+      var thisSerie = series[i];
+      // console.log(thisFilm);
+      var flag = thisSerie.original_language;
+
+      var context = {
+
+        name: thisSerie.name,
+        original_name : thisSerie.original_name,
+        // original_language : 'img/' +flag + '.png',
+
+        // specialChars: printStars(thisFilm.vote_average)
       }
       var html = template(context);
       $(".covers").append(html);
