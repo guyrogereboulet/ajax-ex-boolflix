@@ -28,7 +28,7 @@
         Film :{{title}}
         <ul>
           <li>{{original_title}}</li>
-          <li><img class="flag" src="{{original_language}}" alt=""></li>
+          <li>{{{original_language}}}</li>
           <li>specialChars:{{{specialChars}}}</li>
           <li><img class="poster" src="{{{poster_path}}}" alt=""></li>
         </ul>
@@ -36,12 +36,8 @@
     </script>
 
     <script id="series-template" type="text/x-handlebars-template">
-      <li>
-         Serie TV : {{name}}
-        <ul>
-          <li>{{original_title}}</li>
-        </ul>
-      </li>
+      <li>Serie TV : {{name}}</li>
+      <li>{{original_title}}</li>
     </script>
 
       <script id="no-results" type="text/x-handlebars-template">

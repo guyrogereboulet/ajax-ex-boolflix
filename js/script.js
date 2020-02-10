@@ -131,7 +131,7 @@ function printFilms(films) {
 
         title: thisFilm.title,
         original_title : thisFilm.original_title,
-        original_language : 'img/' +flag + '.png',
+        original_language : printLanguage(flag),
         specialChars: printStars(thisFilm.vote_average),
         poster_path: 'https://image.tmdb.org/t/p/w200' + thisFilm.poster_path
       }
@@ -159,9 +159,8 @@ function printSeries(series) {
 
         name: thisSerie.name,
         original_name : thisSerie.original_name,
-        original_language : 'img/' +flag + '.png',
+        original_language : printLanguage(flag)
 
-        // specialChars: printStars(thisFilm.vote_average)
       }
       var html = template(context);
       $(".covers").append(html);
@@ -197,4 +196,14 @@ function printStars(vote) {
     star += singleStar;
   }
   return star;
+}
+
+//  Stampa le lingue
+function printLanguage(string) {
+  var availablelangs = ["it", "de", "es", "uk", "fr"];
+  if (availablelangs.includes(string)) {
+
+    string ='<img class="flag" src="img/' + string  +'.png" alt="">'
+  }
+  return string;
 }
