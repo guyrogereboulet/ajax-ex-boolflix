@@ -126,6 +126,8 @@ function printFilms(films) {
       var thisFilm = films[i];
       // console.log(thisFilm);
       var flag = thisFilm.original_language;
+      var thumbnail = thisFilm.poster_path;
+      var link = 'https://image.tmdb.org/t/p/w300';
 
       var context = {
 
@@ -133,12 +135,24 @@ function printFilms(films) {
         original_title : thisFilm.original_title,
         original_language : printLanguage(flag),
         specialChars: printStars(thisFilm.vote_average),
-        poster_path: 'https://image.tmdb.org/t/p/w200' + thisFilm.poster_path
+        poster_path: printThumbnail(link, thumbnail)
+
       }
       var html = template(context);
       $(".covers").append(html);
     }
 
+
+}
+
+function printThumbnail(stringOne, stringTwo) {
+  if (stringTwo == null) {
+    var stringOne = 'img/not_available.png';
+    return stringOne;
+  }
+  else {
+    return stringOne + stringTwo;
+  }
 
 }
 
@@ -154,12 +168,15 @@ function printSeries(series) {
       var thisSerie = series[i];
       // console.log(thisFilm);
       var flag = thisSerie.original_language;
+      var thumbnail = thisSerie.poster_path;
+      var link = 'https://image.tmdb.org/t/p/w300';
 
       var context = {
 
         name: thisSerie.name,
         original_name : thisSerie.original_name,
-        original_language : printLanguage(flag)
+        original_language : printLanguage(flag),
+        poster_path: printThumbnail(link, thumbnail)
 
       }
       var html = template(context);
