@@ -47,7 +47,7 @@ $(document).ready(function(){
   $(".send-button").click(function () {
      var query = $(".send-text").val();
      resetSearch();
-     getMovies(query);
+     getResults(query);
   });
 
 
@@ -55,7 +55,8 @@ $(document).ready(function(){
 });
 
 // FUNCTIONS //
-function getMovies(string) {
+function getResults(string) {
+  //AJAX  Films
   var api_Key = "2497798e40ab8a3da50f2eb1da517d7c";
   var url = "https://api.themoviedb.org/3/search/movie";
   $.ajax({
@@ -84,8 +85,7 @@ function getMovies(string) {
     }
   });
 
-  // SerieTV
-
+  //AJAX  SerieTV
   var api_key = "2497798e40ab8a3da50f2eb1da517d7c";
   var url = "https://api.themoviedb.org/3/search/tv";
   $.ajax({
@@ -113,10 +113,11 @@ function getMovies(string) {
       console.log(errors);
     }
   });
+
 }
 
 
-
+//  Stampa Films
 function printFilms(films) {
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
@@ -131,8 +132,8 @@ function printFilms(films) {
         title: thisFilm.title,
         original_title : thisFilm.original_title,
         original_language : 'img/' +flag + '.png',
-
-        specialChars: printStars(thisFilm.vote_average)
+        specialChars: printStars(thisFilm.vote_average),
+        poster_path: 'https://image.tmdb.org/t/p/w200' + thisFilm.poster_path
       }
       var html = template(context);
       $(".covers").append(html);
@@ -141,6 +142,10 @@ function printFilms(films) {
 
 }
 
+
+
+
+//  Stampa Series
 function printSeries(series) {
   var source = $("#series-template").html();
   var template = Handlebars.compile(source);
@@ -154,7 +159,7 @@ function printSeries(series) {
 
         name: thisSerie.name,
         original_name : thisSerie.original_name,
-        // original_language : 'img/' +flag + '.png',
+        original_language : 'img/' +flag + '.png',
 
         // specialChars: printStars(thisFilm.vote_average)
       }
@@ -165,11 +170,13 @@ function printSeries(series) {
 
 }
 
+//  Resetta la ricerca
 function resetSearch() {
     $(".covers").html("");
     $(".send-text").val("");
 }
 
+//  Stampa nessun risultato
 function printNoResult() {
   var source = $("#no-results").html();
   var template = Handlebars.compile(source);
@@ -177,6 +184,7 @@ function printNoResult() {
   $(".covers").append(html);
 }
 
+//  Stampa le stelle
 function printStars(vote) {
   var voteBis = Math.round(vote/2);
   var star = "";

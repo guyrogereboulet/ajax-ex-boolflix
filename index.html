@@ -19,25 +19,25 @@
     <ul class="covers">
 
 
-
     </ul>
 
    <!-- handlebars script -->
 
     <script id="film-template" type="text/x-handlebars-template">
       <li>
-        {{title}}
+        Film :{{title}}
         <ul>
           <li>{{original_title}}</li>
-          <li><img src="{{original_language}}" alt=""></li>
+          <li><img class="flag" src="{{original_language}}" alt=""></li>
           <li>specialChars:{{{specialChars}}}</li>
+          <li><img class="poster" src="{{{poster_path}}}" alt=""></li>
         </ul>
       </li>
     </script>
 
     <script id="series-template" type="text/x-handlebars-template">
       <li>
-         SerieTV : {{name}}
+         Serie TV : {{name}}
         <ul>
           <li>{{original_title}}</li>
         </ul>
