@@ -1,3 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  background-color: black;
+}
+
+
 .star {
   height: 20px;
   width: 20px;
@@ -6,4 +18,31 @@
 .flag {
   height: 20px;
   width: 20px;
+}
+
+
+.covers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: black;
+}
+
+.container {
+  background-color: black;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+
+.covers li{
+ list-style: none;
+}
+
+.search-bar {
+  margin-left: 50%;
 }

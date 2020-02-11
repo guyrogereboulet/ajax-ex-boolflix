@@ -12,15 +12,24 @@
     <title>ajax-ex-boolflix</title>
   </head>
   <body>
-    <div class="search-bar">
-      <input class="send-text" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
-      <button class="send-button" type="button" name="button">cerca</button>
+
+    <div class="container">
+      <header>
+        <div class="logo">
+          <a href="https://fontmeme.com/netflix-font/"><img src="https://fontmeme.com/permalink/200211/646793dd12cd2fe24043bdf42bce4831.png" alt="netflix-font" border="0"></a>
+        </div>
+        <div class="search-bar">
+          <input class="send-text" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
+          <button class="send-button" type="button" name="button">cerca</button>
+        </div>
+      </header>
+      <ul class="covers">
+
+
+
+      </ul>
     </div>
-    <ul class="covers">
 
-
-
-    </ul>
 
    <!-- handlebars script -->
 
@@ -31,15 +40,25 @@
           <li>{{original_title}}</li>
           <li>{{{original_language}}}</li>
           <li>specialChars:{{{specialChars}}}</li>
-          <li><img class="poster" src="{{{poster_path}}}" alt=""></li>
+          <li>
+            <div class="box-img">
+              <div class="box_layover"><i class="far fa-play-circle"></i></div>
+              <img class="poster" src="{{{poster_path}}}" alt="">
+            </div>
+          </li>
         </ul>
       </li>
     </script>
 
     <script id="series-template" type="text/x-handlebars-template">
-      <li>Serie TV : {{name}}</li>
-      <li>{{original_title}}</li>
-      <li><img class="poster" src="{{{poster_path}}}" alt=""></li>
+      <li>
+        Serie TV : {{name}}
+        <ul>
+          <li>{{original_title}}</li>
+          <li>{{{original_language}}}</li>
+          <li><img class="poster" src="{{{poster_path}}}" alt=""></li>
+        </ul>
+      </li>
     </script>
 
       <script id="no-results" type="text/x-handlebars-template">
