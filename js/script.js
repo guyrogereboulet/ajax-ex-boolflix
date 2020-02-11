@@ -65,12 +65,6 @@ $(document).ready(function(){
   });
 
 
-  $(document).on("click", "ul.covers li img.poster", function() {
-    var thisElement = $(this);
-    var casa = "mammammamia";
-    console.log(casa);
-  })
-
 });
 
 // FUNCTIONS //
@@ -153,7 +147,8 @@ function printFilms(films) {
         original_title : thisFilm.original_title,
         original_language : printLanguage(flag),
         specialChars: printStars(thisFilm.vote_average),
-        poster_path: printThumbnail(thumbnail)
+        poster_path: printThumbnail(thumbnail),
+        overview: thisFilm.overview
 
       }
       var html = template(context);
@@ -169,7 +164,7 @@ function printFilms(films) {
 function printThumbnail(thumbnail) {
   var poster = 'img/not_available.png';
   if (thumbnail) { //quindi non è null
-    poster = 'https://image.tmdb.org/t/p/w300' + thumbnail;
+    poster = 'https://image.tmdb.org/t/p/w342' + thumbnail;
   }
   return poster;
 }
@@ -234,7 +229,7 @@ function printStars(vote) {
 
 //  Stampa le lingue
 function printLanguage(string) {
-  var availablelangs = ["it", "de", "es", "uk", "fr"];
+  var availablelangs = ["it", "de", "es", "uk", "fr", "en"];
   if (availablelangs.includes(string)) {
 
     string ='<img class="flag" src="img/' + string  +'.png" alt="">'

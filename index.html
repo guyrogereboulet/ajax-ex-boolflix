@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <!-- CSS-->
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
     <!-- handlebars CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -16,7 +17,7 @@
     <div class="container">
       <header>
         <div class="logo">
-          <a href="https://fontmeme.com/netflix-font/"><img src="https://fontmeme.com/permalink/200211/646793dd12cd2fe24043bdf42bce4831.png" alt="netflix-font" border="0"></a>
+          <a href=""><img src="https://fontmeme.com/permalink/200211/646793dd12cd2fe24043bdf42bce4831.png" alt="netflix-font" border="0"></a>
         </div>
         <div class="search-bar">
           <input class="send-text" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
@@ -35,15 +36,19 @@
 
     <script id="film-template" type="text/x-handlebars-template">
       <li>
-        Film :{{title}}
         <ul>
-          <li>{{original_title}}</li>
-          <li>{{{original_language}}}</li>
-          <li>specialChars:{{{specialChars}}}</li>
           <li>
-            <div class="flex-item">
+            <div class="box-item">
               <div class="box-img">
-                <div class="box-layover"></div>
+                <div class="box-layover">
+                  <div class="film-profile">
+                    <h2>Titolo: {{title}}</h2>
+                    <h3>Titolo originale: {{original_title}}</h3>
+                    <h4>Lingua originale: {{{original_language}}}</h4>
+                    <h5>Voto: {{{specialChars}}}</h5>
+                    <p>Overview: {{overview}}</p>
+                  </div>
+                </div>
                 <img class="poster" src="{{{poster_path}}}" alt="">
               </div>
             </div>
@@ -54,11 +59,21 @@
 
     <script id="series-template" type="text/x-handlebars-template">
       <li>
-        Serie TV : {{name}}
         <ul>
-          <li>{{original_title}}</li>
-          <li>{{{original_language}}}</li>
-          <li><img class="poster" src="{{{poster_path}}}" alt=""></li>
+          <li>
+            <div class="box-item">
+              <div class="box-img">
+                <div class="box-layover">
+                  <div class="film-profile">
+                    <h2>Serie TV: {{name}}</h2>
+                    <h3>Titolo originale: {{original_title}}</h3>
+                    <h4>Lingua originale: {{{original_language}}}</h4>
+                  </div>
+                </div>
+                <img class="poster" src="{{{poster_path}}}" alt="">
+              </div>
+            </div>
+          </li>
         </ul>
       </li>
     </script>

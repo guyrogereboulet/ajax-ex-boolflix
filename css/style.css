@@ -7,6 +7,7 @@
 body {
   color: white;
   background-color: black;
+  font-family: 'Lato', sans-serif;
 }
 
 
@@ -16,8 +17,7 @@ body {
 }
 
 .flag {
-  height: 20px;
-  width: 20px;
+  height: 10px;
 }
 
 
@@ -41,10 +41,11 @@ header {
 
 .covers li{
  list-style: none;
+ margin-bottom: 10px;
 }
 
 .search-bar {
-  margin-left: 50%;
+  margin-left: 70%;
 }
 
 
@@ -54,12 +55,8 @@ header {
 
 
 
-.flex-item .box-layover {
-  visibility: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.box-item .box-layover {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -69,12 +66,8 @@ header {
   z-index: 1;
 }
 
-.flex-item:hover .box-layover {
-  visibility: visible;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.box-item:hover .box-layover {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
@@ -82,4 +75,11 @@ header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+}
+
+.film-profile {
+  padding-top: 10px;
+  padding-left: 10px;
+  height: 100%;
+  width: 100%;
 }
