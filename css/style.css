@@ -36,6 +36,7 @@ body {
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: black;
 }
 
@@ -45,7 +46,11 @@ header {
 }
 
 .search-bar {
-  margin-left: 70%;
+  margin-right: 10px;
+}
+
+.logo {
+  margin-left: 10px;
 }
 
 
@@ -74,6 +79,7 @@ header {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
   z-index: 1;
 }
 
@@ -82,4 +88,12 @@ header {
   padding-left: 10px;
   height: 100%;
   width: 100%;
+}
+
+.film-profile p {
+  font-size: 15px;
+}
+
+.yellow {
+  color: yellow;
 }

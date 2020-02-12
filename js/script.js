@@ -64,6 +64,13 @@ $(document).ready(function(){
      getResults(query);
   });
 
+  $(".send-text").keypress(function(event){
+    if (event.which == 13) {
+      var query = $(".send-text").val();
+      resetSearch();
+      getResults(query);
+    }
+  });
 
 });
 
@@ -188,7 +195,8 @@ function printSeries(series) {
         name: thisSerie.name,
         original_name : thisSerie.original_name,
         original_language : printLanguage(flag),
-        poster_path: printThumbnail(thumbnail)
+        poster_path: printThumbnail(thumbnail),
+        overview: thisSerie.overview
 
       }
       var html = template(context);
@@ -218,9 +226,9 @@ function printStars(vote) {
   var star = "";
   for (var i = 1; i <= 5; i++) {
     if (i <= voteBis){
-      var singleStar = '<i class="fas fa-star"></i>';
+      var singleStar = '<i class="fas fa-star yellow"></i>';
     } else {
-      var singleStar = '<i class="far fa-star"></i>';
+      var singleStar = '<i class="far fa-star yellow"></i>';
     }
     star += singleStar;
   }
