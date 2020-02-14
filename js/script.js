@@ -71,7 +71,7 @@ $(document).ready(function(){
       getResults(query);
     }
   });
-  
+
 
 });
 
@@ -96,7 +96,7 @@ function getResults(string) {
         printFilms(films);
       }
       else {
-        resetSearch()
+        // resetSearch()
         printNoResult();
       }
 
@@ -125,7 +125,7 @@ function getResults(string) {
         printSeries(series);
       }
       else {
-        resetSearch()
+        // resetSearch()
         printNoResult();
       }
 
